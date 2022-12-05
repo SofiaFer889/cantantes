@@ -6,17 +6,16 @@ from django.views.generic import (
     View,
     FormView,
     ListView,
-    DeleteView,
     UpdateView,
 )
 
-from .models import Artista
-from .forms import ArtistaCreateForm
+from .models import Artista, Album, Empresa
+from .forms import ArtistaCreateForm, AlbumsCreateForm
 
 class ArtistaCreateView(FormView):
     template_name = "artista/add.html"
     form_class = ArtistaCreateForm
-    success_url = reverse_lazy('artista_app:registro-artista')
+    success_url = reverse_lazy('artista_app:lista-user')
     
     def form_valid(self, form):
         
@@ -46,3 +45,32 @@ class ArtistaListView(ListView):
        
     def get_queryset(self):
         return Artista.objects.all()
+    
+class AlbumsCreateView(FormView):
+    template_name = "albums/add.html"
+    form_class = AlbumsCreateForm
+    success_url = reverse_lazy('artista_app:registro-album')
+    
+    def form_valid(self, form):
+        
+        Album.objects.create_user(
+            nombre_album=form.cleaned_data['nombre_album'],
+            artista=form.changed_data['artista'],
+        )
+        
+        return super(AlbumsCreateView, self).form_valid(form)
+    
+class EmpresaCreateView(FormView):
+    template_name = "empresa/add.html"
+    form_class = AlbumsCreateForm
+    success_url = reverse_lazy('artista_app:registro-empresa')
+    
+    def form_valid(self, form):
+        
+        Empresa.objects.create_user(
+            nombre_empresa=form.cleaned_data['nombre_empresa'],
+            artista=form.changed_data['artista'],
+        )
+        
+        return super(EmpresaCreateView, self).form_valid(form)
+    

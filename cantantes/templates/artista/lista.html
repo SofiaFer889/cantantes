@@ -14,7 +14,7 @@
           </tr>
         </thead>
         <tbody>
-            {% for usuarios in usuario %}
+            {% for artistas in artista %}
             <tr >
               <td>{{artista.nombre}}</td>
               <td>{{artista.apellido}}</td>
@@ -22,9 +22,9 @@
               <td>{{artista.fecha_de_nacimiento}}</td>
               <td>{{artista.sueldo_mensual}}</td>
               <td>
-                <div class="button-group">
-                    <a href="{% url 'artista_app:update-user' artista.id%}" class="secondary button">modificar</a>
-                </div>
+                <form method="POST">{% csrf_token %}
+                  <button href="{% url 'artista_app:update-user' artistas.id%}" type="submit">modificar</button>
+                </form>
               </td>
             </tr>
             {%endfor%}
