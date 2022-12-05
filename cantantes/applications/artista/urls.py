@@ -5,5 +5,7 @@ from . import views
 app_name = 'artista_app'
 
 urlpatterns = [
-    #path('api/user/create', apiviews.ProyectoCreateAPIView.as_view(),),
+    path('registro/artista', views.ArtistaCreateView.as_view(), name='registro-artista'),
+    path('actualizar/user/<pk>', views.ArtistaUpdateView.as_view(), name='update-user'),
+    path('lista/user', views.ArtistaListView.as_view(), name='lista-user'),
 ]

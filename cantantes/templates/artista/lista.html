@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul>
+    <table class="unstriped">
+       <thead>
+          <tr>
+            <th width="100">Nombre</th>
+            <th width="300">Apellido</th>
+            <th width="200">DNI</th>
+            <th width="200">Fecha de Nacimiento</th>
+            <th width="300">Sueldo</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for usuarios in usuario %}
+            <tr >
+              <td>{{artista.nombre}}</td>
+              <td>{{artista.apellido}}</td>
+              <td>{{artista.dni}}</td>
+              <td>{{artista.fecha_de_nacimiento}}</td>
+              <td>{{artista.sueldo_mensual}}</td>
+              <td>
+                <div class="button-group">
+                    <a href="{% url 'artista_app:update-user' artista.id%}" class="secondary button">modificar</a>
+                </div>
+              </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <a class="button expanded" href="{% url 'artista_app:registro-artista'%}">Nuevo artista</a>
+</ul>
+{% endblock content %}

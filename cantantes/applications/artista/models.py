@@ -11,3 +11,17 @@ class Artista(models.Model):
     
     def __str__(self):
         return self.apellido + '-' + self.nombre
+    
+class Empresa(models.Model):
+    nombre_empresa = models.CharField('nombre de la empresa', max_length=100)
+    artista = models.ForeignKey(Artista, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.nombre_empresa + '-' + self.artista.nombre
+    
+class Album(models.Model):
+    nombre_album = models.CharField('nombre del album', max_length=100)
+    artista = models.ForeignKey(Artista, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.nombre_album + '-' + self.artista.nombre

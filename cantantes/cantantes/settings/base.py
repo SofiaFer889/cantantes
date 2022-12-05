@@ -15,9 +15,7 @@ DJANGO_APPS = (
 )
 
 LOCAL_APPS = (
-    'applications.albums',
     'applications.artista',
-    'applications.empresa',
 )
 
 THIRD_PARTY_APPS = (
