@@ -3,7 +3,8 @@
 {% block content %}
 
 <ul>
-    <table class="unstriped">
+  <a href="{% url 'artista_app:lista-user-nombre' %}">buscar</a>
+    <table>
        <thead>
           <tr>
             <th width="100">Nombre</th>
@@ -16,20 +17,20 @@
         <tbody>
             {% for artistas in artista %}
             <tr >
-              <td>{{artista.nombre}}</td>
-              <td>{{artista.apellido}}</td>
-              <td>{{artista.dni}}</td>
-              <td>{{artista.fecha_de_nacimiento}}</td>
-              <td>{{artista.sueldo_mensual}}</td>
+              <td>{{artistas.nombre}}</td>
+              <td>{{artistas.apellido}}</td>
+              <td>{{artistas.dni}}</td>
+              <td>{{artistas.fecha_de_nacimiento}}</td>
+              <td>{{artistas.sueldo_mensual}}</td>
               <td>
                 <form method="POST">{% csrf_token %}
-                  <button href="{% url 'artista_app:update-user' artistas.id%}" type="submit">modificar</button>
+                  <a href="{% url 'artista_app:update-user' artistas.id%}">modificar</a>
                 </form>
               </td>
             </tr>
             {%endfor%}
         </tbody>
     </table>
-    <a class="button expanded" href="{% url 'artista_app:registro-artista'%}">Nuevo artista</a>
+    <a href="{% url 'artista_app:registro-artista'%}">Nuevo artista</a>
 </ul>
 {% endblock content %}

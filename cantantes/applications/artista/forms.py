@@ -6,31 +6,18 @@ class ArtistaCreateForm(forms.ModelForm):
     class Meta:
         
      model = Artista
-     fields = (
-        'nombre',
-        'apellido',
-        'foto',
-        'dni',
-        'fecha_de_nacimiento',
-        'sueldo_mensual',
-     )
+     fields = ('__all__')
      
 class AlbumsCreateForm(forms.ModelForm):
    
    class Meta:
       
       model = Album
-      fields = (
-         'nombre_album',
-         'artista',
-      )
+      fields = ('__all__')
       
 class AlbumsCreateForm(forms.ModelForm):
        
    class Meta:
       
       model = Empresa
-      fields = (
-         'nombre_empresa',
-         'artista',
-      )
+      fields = ('__all__')

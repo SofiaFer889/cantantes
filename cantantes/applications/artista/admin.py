@@ -5,7 +5,17 @@ from .models import (
     Album,
     Empresa
 )
-
-admin.site.register(Artista)
 admin.site.register(Album)
 admin.site.register(Empresa)
+
+class ArtistaAdmin(admin.ModelAdmin):
+    list_display = (
+        'nombre',
+        'apellido',
+        'dni',
+        'fecha_de_nacimiento',
+        'sueldo_mensual',
+    )
+    search_fields = ('nombre',)
+    list_filter = ('sueldo_mensual',)
+admin.site.register(Artista, ArtistaAdmin)

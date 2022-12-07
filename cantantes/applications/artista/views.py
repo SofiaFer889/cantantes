@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import (
     View,
-    FormView,
+    CreateView,
     ListView,
     UpdateView,
 )
@@ -12,19 +12,12 @@ from django.views.generic import (
 from .models import Artista, Album, Empresa
 from .forms import ArtistaCreateForm, AlbumsCreateForm
 
-class ArtistaCreateView(FormView):
+class ArtistaCreateView(CreateView):
     template_name = "artista/add.html"
+    model = Artista
     form_class = ArtistaCreateForm
     success_url = reverse_lazy('artista_app:lista-user')
-    
-    def form_valid(self, form):
-        
-        Artista.objects.create_user(
-            nombre=form.cleaned_data['nombre'],
-            apellido=form.changed_data['apellido'],
-        )
-        
-        return super(ArtistaCreateView, self).form_valid(form)
+
     
 class ArtistaUpdateView(UpdateView):
     model = Artista
@@ -32,45 +25,38 @@ class ArtistaUpdateView(UpdateView):
     fields = [
         'nombre',
         'apellido',
-        'foto',
         'dni',
         'fecha_de_nacimiento',
         'sueldo_mensual',
     ]
-    success_url = reverse_lazy('login_app:lista-user')
+    success_url = reverse_lazy('artista_app:lista-user')
     
 class ArtistaListView(ListView):
     template_name = "artista/lista.html"
     context_object_name = 'artista'
-       
-    def get_queryset(self):
-        return Artista.objects.all()
     
-class AlbumsCreateView(FormView):
+    def get_queryset(self):
+        return Artista.objects.all
+    
+class ArtistaListBykword(ListView):
+    template_name = "artista/lista_nombre.html"
+    context_object_name = 'artista'
+    
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get("kword", "")
+        lista = Artista.objects.filter(
+            nombre = palabra_clave
+        )
+        return lista
+    
+    
+class AlbumsCreateView(CreateView):
     template_name = "albums/add.html"
     form_class = AlbumsCreateForm
     success_url = reverse_lazy('artista_app:registro-album')
     
-    def form_valid(self, form):
-        
-        Album.objects.create_user(
-            nombre_album=form.cleaned_data['nombre_album'],
-            artista=form.changed_data['artista'],
-        )
-        
-        return super(AlbumsCreateView, self).form_valid(form)
-    
-class EmpresaCreateView(FormView):
+class EmpresaCreateView(CreateView):
     template_name = "empresa/add.html"
     form_class = AlbumsCreateForm
     success_url = reverse_lazy('artista_app:registro-empresa')
-    
-    def form_valid(self, form):
-        
-        Empresa.objects.create_user(
-            nombre_empresa=form.cleaned_data['nombre_empresa'],
-            artista=form.changed_data['artista'],
-        )
-        
-        return super(EmpresaCreateView, self).form_valid(form)
     
