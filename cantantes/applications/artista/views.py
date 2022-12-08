@@ -60,3 +60,6 @@ class EmpresaCreateView(CreateView):
     form_class = AlbumsCreateForm
     success_url = reverse_lazy('artista_app:registro-empresa')
     
+class Join(ListView):
+    template_name = "artista/lista_join.html"
+    context_object_name = 'artista'
