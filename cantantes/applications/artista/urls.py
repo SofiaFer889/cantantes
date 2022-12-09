@@ -11,4 +11,5 @@ urlpatterns = [
     path('actualizar/user/<pk>', views.ArtistaUpdateView.as_view(), name='update-user'),
     path('lista/user', views.ArtistaListView.as_view(), name='lista-user'),
     path('lista/user-nombre', views.ArtistaListBykword.as_view(), name='lista-user-nombre'),
+    path('consulta/join', views.ConsultaJoinn.as_view(), name='join'),
 ]

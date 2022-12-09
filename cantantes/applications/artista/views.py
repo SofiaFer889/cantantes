@@ -3,7 +3,6 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse_lazy, reverse
 from django.views.generic import (
-    View,
     CreateView,
     ListView,
     UpdateView,
@@ -60,6 +59,10 @@ class EmpresaCreateView(CreateView):
     form_class = AlbumsCreateForm
     success_url = reverse_lazy('artista_app:registro-empresa')
     
-class Join(ListView):
-    template_name = "artista/lista_join.html"
-    context_object_name = 'artista'
+class ConsultaJoinn(ListView):
+    template_name = "artista/join.html"
+    context_object_name = 'artistas'
+    
+    def get_queryset(self):
+        artistas = Artista.objects.select_related().all()
+        return artistas
