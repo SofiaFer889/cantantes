@@ -3,6 +3,7 @@
 {% block content %}
 
 <ul>
+ <div class="container-fluid">
   <a href="{% url 'artista_app:lista-user-nombre' %}">buscar</a>
     <table>
        <thead>
@@ -32,5 +33,6 @@
         </tbody>
     </table>
     <a href="{% url 'artista_app:registro-artista'%}">Nuevo artista</a>
+  </div>
 </ul>
 {% endblock content %}
