@@ -5,8 +5,8 @@
 <ul>
  <div class="container-fluid">
   <a href="{% url 'artista_app:lista-user-nombre' %}">buscar</a>
-    <table>
-       <thead>
+   <table class="table">
+      <thead class="table-dark">
           <tr>
             <th width="100">Nombre</th>
             <th width="300">Apellido</th>
@@ -14,7 +14,7 @@
             <th width="200">Fecha de Nacimiento</th>
             <th width="300">Sueldo</th>
           </tr>
-        </thead>
+      </thead>
         <tbody>
             {% for artistas in artista %}
             <tr >
@@ -25,14 +25,16 @@
               <td>{{artistas.sueldo_mensual}}</td>
               <td>
                 <form method="POST">{% csrf_token %}
-                  <a href="{% url 'artista_app:update-user' artistas.id%}">modificar</a>
+                  <a class="btn btn-dark" href="{% url 'artista_app:update-user' artistas.id%}">modificar</a>
                 </form>
               </td>
             </tr>
             {%endfor%}
         </tbody>
     </table>
-    <a href="{% url 'artista_app:registro-artista'%}">Nuevo artista</a>
+    <div class="d-grid gap-2">
+      <a class="btn btn-dark" href="{% url 'artista_app:registro-artista'%}">Nuevo artista</a>
+    </div>
   </div>
 </ul>
 {% endblock content %}
