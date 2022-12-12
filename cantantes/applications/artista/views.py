@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse_lazy, reverse
 from django.views.generic import (
+    TemplateView,
     CreateView,
     ListView,
     UpdateView,
@@ -66,3 +67,8 @@ class ConsultaJoinn(ListView):
     def get_queryset(self):
         artistas = Artista.objects.select_related().all()
         return artistas
+
+
+
+class HomeView(TemplateView):
+    template_name = "artista/home.html"
