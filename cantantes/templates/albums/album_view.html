@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul>
+ <div class="container-fluid">
+   <table class="table">
+      <thead class="table-dark">
+          <tr>
+            <th width="300">Nombre del album</th>
+          </tr>
+      </thead>
+        <tbody>
+            {% for albums in album %}
+            <tr >
+              <td>{{albums.nombre_album}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <div class="d-grid gap-2">
+      <a class="btn btn-dark" href="{% url 'artista_app:registro-album'%}">Nuevo Album</a>
+    </div>
+  </div>
+</ul>
+{% endblock content %}

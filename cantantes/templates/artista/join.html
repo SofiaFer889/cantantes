@@ -1,7 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 <ul>
-    <a href="{% url 'artista_app:lista-user-nombre' %}">buscar</a>
-      <table>
-         <thead>
+    <div class="container-fluid">
+      <table class="table">
+         <thead class="table-dark">
             <tr>
               <th width="400">Nombre</th>
               <th width="400">Apellido</th>
@@ -16,11 +20,14 @@
                 <td>{{artista.album.nombre_album}}</td>
                 <td>
                   <form method="POST">{% csrf_token %}
-                    <a href="{% url 'artista_app:update-user' artista.id%}">modificar</a>
+                    <a class="btn btn-dark" href="{% url 'artista_app:update-user' artista.id%}">modificar</a>
                   </form>
                 </td>
               </tr>
               {%endfor%}
           </tbody>
       </table>
-  </ul>
+    </div>
+</ul>
+
+{% endblock content %}

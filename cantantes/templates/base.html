@@ -14,10 +14,19 @@
     <div class="row">
       <div class="col-1 col-sm-1 bg-dark">
         <nav class="nav flex-column">
-          <a class="nav-link active" aria-current="page" href="#">Active</a>
-          <a class="nav-link" href="#">Link</a>
-          <a class="nav-link" href="#">Link</a>
-          <a class="nav-link disabled">Disabled</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'artista_app:home' %}">home</a>
+          <a class="nav-link" href="{% url 'artista_app:lista-user' %}">Cantantes</a>
+          <a class="nav-link" href="{% url 'artista_app:album-user' %}">Albums</a>
+          <a class="nav-link" href="{% url 'artista_app:empresa-user' %}">Empresa</a>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Buscar
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item active"  href="{% url 'artista_app:lista-user-nombre' %}">Buscar por Nombre</a></li>
+              <li><a class="dropdown-item"  href="{% url 'artista_app:join' %}">buscar por artista y album</a></li>
+            </ul>
+          </div>
         </nav>
       </div>
       <div class="col-10 col-sm-10">

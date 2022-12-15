@@ -1,11 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
 <form method="GET">{% csrf_token %}
     <input type="text" id="kword" name="kword" placeholder="ingrese nombre">
     <button type="submit">Buscar</button>
 </form>
 
 <ul>
-    <table>
-        <thead>
+  <div class="container-fluid">
+    <table class="table">
+       <thead class="table-dark">
            <tr>
              <th width="100">Nombre</th>
              <th width="300">Apellido</th>
@@ -24,11 +30,14 @@
                <td>{{artistas.sueldo_mensual}}</td>
                <td>
                  <form method="POST">{% csrf_token %}
-                   <a href="{% url 'artista_app:update-user' artistas.id%}">modificar</a>
+                   <a class="btn btn-dark" href="{% url 'artista_app:update-user' artistas.id%}">modificar</a>
                  </form>
                </td>
              </tr>
             {%endfor%}
          </tbody>
     </table>
+  </div>
 </ul>
+
+{% endblock content %}

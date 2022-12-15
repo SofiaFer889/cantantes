@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul>
+ <div class="container-fluid">
+   <table class="table">
+      <thead class="table-dark">
+          <tr>
+            <th width="300">Nombre de la Empresa</th>
+            <th width="300">Nombre del Artista</th>
+          </tr>
+      </thead>
+        <tbody>
+            {% for empresas in empresa %}
+            <tr >
+              <td>{{empresas.nombre_empresa}}</td>
+              <td>{{empresas.artista}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <div class="d-grid gap-2">
+      <a class="btn btn-dark" href="{% url 'artista_app:registro-empresa'%}">Nueva Empresa</a>
+    </div>
+  </div>
+</ul>
+{% endblock content %}

@@ -53,12 +53,30 @@ class ArtistaListBykword(ListView):
 class AlbumsCreateView(CreateView):
     template_name = "albums/add.html"
     form_class = AlbumsCreateForm
-    success_url = reverse_lazy('artista_app:registro-album')
+    success_url = reverse_lazy('artista_app:album-user')
+    
+    
+class AlbumListView(ListView):
+    template_name = "albums/album_view.html"
+    context_object_name = 'album'
+    
+    def get_queryset(self):
+        return Album.objects.all
+    
     
 class EmpresaCreateView(CreateView):
     template_name = "empresa/add.html"
     form_class = AlbumsCreateForm
-    success_url = reverse_lazy('artista_app:registro-empresa')
+    success_url = reverse_lazy('artista_app:empresa-user')
+    
+    
+class EmpresaListView(ListView):
+    template_name = "empresa/empresa_view.html"
+    context_object_name = 'empresa'
+    
+    def get_queryset(self):
+        return Empresa.objects.all
+    
     
 class ConsultaJoinn(ListView):
     template_name = "artista/join.html"
@@ -67,7 +85,6 @@ class ConsultaJoinn(ListView):
     def get_queryset(self):
         artistas = Artista.objects.select_related().all()
         return artistas
-
 
 
 class HomeView(TemplateView):
