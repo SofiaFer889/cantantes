@@ -15,7 +15,7 @@ class AlbumsCreateForm(forms.ModelForm):
       model = Album
       fields = ('__all__')
       
-class AlbumsCreateForm(forms.ModelForm):
+class EmpresaCreateForm(forms.ModelForm):
        
    class Meta:
       

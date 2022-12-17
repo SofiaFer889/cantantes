@@ -9,8 +9,9 @@ from django.views.generic import (
     UpdateView,
 )
 
+
 from .models import Artista, Album, Empresa
-from .forms import ArtistaCreateForm, AlbumsCreateForm
+from .forms import ArtistaCreateForm, AlbumsCreateForm, EmpresaCreateForm
 
 class ArtistaCreateView(CreateView):
     template_name = "artista/add.html"
@@ -28,6 +29,7 @@ class ArtistaUpdateView(UpdateView):
         'dni',
         'fecha_de_nacimiento',
         'sueldo_mensual',
+        'album',
     ]
     success_url = reverse_lazy('artista_app:lista-user')
     
@@ -66,7 +68,7 @@ class AlbumListView(ListView):
     
 class EmpresaCreateView(CreateView):
     template_name = "empresa/add.html"
-    form_class = AlbumsCreateForm
+    form_class = EmpresaCreateForm
     success_url = reverse_lazy('artista_app:empresa-user')
     
     

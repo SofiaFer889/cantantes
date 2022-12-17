@@ -1,8 +1,17 @@
-<div>
-    <h1>Registrar Artista</h1>
+{% extends 'base.html' %}
 
-    <form method="POST">{% csrf_token %}
-        {{ form.as_p }}
-    <button type="submit">Agregar</button>
-    </form>
-<div>
+{% block content %}
+    
+    <div class="card text-center">
+        <div class="card-header">
+            Registrar Artista
+        </div>
+        <div class="card-body">
+            <form method="POST">{% csrf_token %}
+                {{ form.as_p }}
+            <button type="submit">Agregar</button>
+            </form>
+        </div>
+    </div>
+    
+{% endblock content %}
