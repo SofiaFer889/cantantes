@@ -91,3 +91,15 @@ class ConsultaJoinn(ListView):
 
 class HomeView(TemplateView):
     template_name = "artista/home.html"
+    
+class AumentarSueldo(UpdateView):
+    model = Artista
+    template_name = "artista/update20.html"
+    fields = ['sueldo_mensual']
+    success_url = reverse_lazy('artista_app:lista-user')
+    
+    def aumentar(self, sueldo_mensual):
+        sueldo_mensual = Artista.sueldo_mensual
+        x = 0,20
+        salarioAumentado = (sueldo_mensual * (x/100))
+        return salarioAumentado
