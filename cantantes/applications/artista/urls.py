@@ -15,5 +15,5 @@ urlpatterns = [
     path('lista/user-nombre', views.ArtistaListBykword.as_view(), name='lista-user-nombre'),
     path('consulta/join', views.ConsultaJoinn.as_view(), name='join'),
     path('home', views.HomeView.as_view(), name='home'),
-    path('incrementar/<pk>', views.AumentarSueldo.as_view(), name='aumentar'),
+    path('incrementar', views.aumentar, name='aumentar'),
 ]
