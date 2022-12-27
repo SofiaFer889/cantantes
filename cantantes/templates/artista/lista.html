@@ -8,10 +8,11 @@
       <thead class="table-dark">
           <tr>
             <th width="100">Nombre</th>
-            <th width="300">Apellido</th>
-            <th width="200">DNI</th>
+            <th width="200">Apellido</th>
+            <th width="100">DNI</th>
             <th width="200">Fecha de Nacimiento</th>
-            <th width="300">Sueldo</th>
+            <th width="200">Sueldo</th>
+            <th width=""></th>
           </tr>
       </thead>
         <tbody>
@@ -25,6 +26,9 @@
               <td>
                 <form method="POST">{% csrf_token %}
                   <a class="btn btn-dark" href="{% url 'artista_app:update-user' artistas.id%}">modificar</a>
+                  <a class="btn btn-dark" href="{% url 'artista_app:aumentar3' artistas.id%}">10%</a>
+                  <a class="btn btn-dark" href="{% url 'artista_app:aumentar2' artistas.id%}">15%</a>
+                  <a class="btn btn-dark" href="{% url 'artista_app:aumentar' artistas.id%}">20%</a>
                 </form>
               </td>
             </tr>
@@ -33,6 +37,7 @@
     </table>
     <div class="d-grid gap-2">
       <a class="btn btn-dark" href="{% url 'artista_app:registro-artista'%}">Nuevo artista</a>
+      <a class="btn btn-dark"  href="{% url 'artista_app:contar' %}">cantidad de Artistas Registrados</a>
     </div>
   </div>
 </ul>

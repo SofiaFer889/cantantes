@@ -1,4 +1,6 @@
 from django.db import models
+from datetime import datetime, timedelta
+
 
 # Create your models here.
 class Album(models.Model):
@@ -14,8 +16,14 @@ class Artista(models.Model):
     sueldo_mensual = models.PositiveIntegerField()
     album = models.ForeignKey(Album, on_delete=models.CASCADE, null=True)
     
+    def edad(self):
+        hoy = datetime.now()
+        nacimiento = datetime.combine(self.fecha_de_nacimiento, datetime.min.time())
+        return (hoy - nacimiento).days // 365
+
+        
     def __str__(self):
-        return self.nombre 
+        return str(self.id) + ' - ' + self.nombre 
     
 class Empresa(models.Model):
     nombre_empresa = models.CharField('nombre de la empresa', max_length=100)

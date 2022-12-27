@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul>
+ <div class="container-fluid">
+   <table class="table">
+      <thead class="table-dark">
+          <tr>
+            <th width="100">Nombre</th>
+            <th width="200">Apellido</th>
+            <th width="200">Sueldo</th>
+          </tr>
+      </thead>
+        <tbody>
+            {% for m in menor %}
+            <tr >
+              <td>{{m.nombre}}</td>
+              <td>{{m.apellido}}</td>
+              <td>{{m.sueldo_mensual}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</ul>
+{% endblock content %}

@@ -3,13 +3,12 @@
 {% block content %}
 
 
-<form method="GET">{% csrf_token %}
-    <input type="text" id="kword" name="kword" placeholder="ingrese nombre">
-    <button type="submit">Buscar</button>
-</form>
-
 <ul>
   <div class="container-fluid">
+    <form class="d-flex" role="search" method="GET">{% csrf_token %}
+      <input type="text" id="kword" name="kword" placeholder="ingrese nombre">
+      <button type="submit">Buscar</button>
+    </form>
     <table class="table">
        <thead class="table-dark">
            <tr>

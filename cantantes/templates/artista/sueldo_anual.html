@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<ul>
+ <div class="container-fluid">
+   <table class="table">
+      <thead class="table-dark">
+          <tr>
+            <th width="100">Nombre</th>
+            <th width="50">Apellido</th>
+            <th width="100">sueldo_anual</th>
+            <th width=""></th>
+          </tr>
+      </thead>
+        <tbody>
+          {% for artista in artistas_info %}
+          <tr>
+              <td>{{ artista.nombre }}</td>
+              <td>{{ artista.apellido }}</td>
+              <td>{{ artista.sueldo_anual }}</td>
+              
+          </tr>
+          {%endfor%}
+        </tbody>
+    </table>
+    <div class="d-grid gap-2">
+      <a class="btn btn-dark" href="{% url 'artista_app:registro-artista'%}">Nuevo artista</a>
+      <a class="btn btn-dark"  href="{% url 'artista_app:contar' %}">cantidad de Artistas Registrados</a>
+    </div>
+  </div>
+</ul>
+{% endblock content %}
