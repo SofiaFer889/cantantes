@@ -1,3 +1,27 @@
-{% for artista, edad in artistas_edades %}
-    <p>{{ artista.nombre }} tiene {{ edad }} años</p>
-{% endfor %}
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<ul>
+ <div class="container-fluid">
+   <table class="table">
+      <thead class="table-dark">
+          <tr>
+            <th width="300">Nombre</th>
+            <th width="300">Edad</th>
+          </tr>
+      </thead>
+        <tbody>
+          {% for artista, edad in artistas_edades %}
+              <tr>
+                 <td>>{{ artista.nombre }}</td>
+                 <td>{{ edad }}</td>
+              </tr>
+          {%endfor%}
+        </tbody>
+    </table>
+  </div>
+</ul>
+{% endblock content %}

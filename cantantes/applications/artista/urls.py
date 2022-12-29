@@ -24,4 +24,5 @@ urlpatterns = [
     path('diferencia', views.DiferenciaMayorMenorSueldo.as_view(), name='diferencia'),
     path('sueldo/anual/artista', views.SueldoAnual.as_view(), name='sueldo-anual'),
     path('edad/artista', views.CalcularEdad.as_view(), name='edad'),
+    path('sueldo/promedio/artista', views.Promedio.as_view(), name='promedio'),
 ]

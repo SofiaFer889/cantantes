@@ -4,6 +4,40 @@
 
 <ul>
  <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'artista_app:registro-artista'%}">Nuevo artista</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'artista_app:contar' %}">registros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'artista_app:sueldo-anual' %}">sueldo anual</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'artista_app:edad' %}">edades</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'artista_app:promedio' %}">sueldo promedio</a>
+          </li>
+        </ul>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          detalles
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark">
+          <li><a class="dropdown-item"  href="{% url 'artista_app:sueldo-mayor' %}">mayor sueldo</a></li>
+          <li><a class="dropdown-item"  href="{% url 'artista_app:sueldo-menor' %}">menor sueldo</a></li>
+          <li><a class="dropdown-item"  href="{% url 'artista_app:diferencia' %}">diferencia Mayor-Menor</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
    <table class="table">
       <thead class="table-dark">
           <tr>
@@ -35,10 +69,6 @@
             {%endfor%}
         </tbody>
     </table>
-    <div class="d-grid gap-2">
-      <a class="btn btn-dark" href="{% url 'artista_app:registro-artista'%}">Nuevo artista</a>
-      <a class="btn btn-dark"  href="{% url 'artista_app:contar' %}">cantidad de Artistas Registrados</a>
-    </div>
   </div>
 </ul>
 {% endblock content %}

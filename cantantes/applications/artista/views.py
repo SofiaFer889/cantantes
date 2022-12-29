@@ -6,7 +6,7 @@ from django.views.generic import (
     ListView,
     UpdateView,
 )
-from django.db.models import Max, Min
+from django.db.models import Max, Min, Avg
 
 from .models import Artista, Album, Empresa
 from .forms import ArtistaCreateForm, AlbumsCreateForm, EmpresaCreateForm
@@ -195,6 +195,7 @@ class ConsultaJoinn(ListView):
 class HomeView(TemplateView):
     template_name = "artista/home.html"
     
+    
 class SueldoAnual(ListView):
     model = Artista
     template_name = "artista/sueldo_anual.html"
@@ -224,3 +225,14 @@ class CalcularEdad(ListView):
         context = super().get_context_data(**kwargs)
         context['artistas_edades'] = [(artista, artista.edad()) for artista in context['artistas']]
         return context
+    
+    
+class Promedio(ListView):
+    model = Artista
+    template_name = "artista/sueldo_promedio.html"
+    context_object_name = 'artistas'
+    
+    def get_context_data(self, **kwargs):
+        sueldo_promedio= super().get_context_data(**kwargs)
+        sueldo_promedio['sueldo_promedio'] = Artista.objects.aggregate(Avg('sueldo_mensual'))['sueldo_mensual__avg']
+        return sueldo_promedio
