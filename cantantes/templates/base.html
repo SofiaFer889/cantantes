@@ -1,3 +1,5 @@
+{% load static %}
+
 <html lang="es-ar">
 <head>
   <meta charset="utf-8">
@@ -9,6 +11,7 @@
 </head>
 <body>
   <!-- JavaScript Bundle with Popper -->
+  <script src="C:/Users/Usuario/Documents/proyecto/cantantes/cantantes/static/js/reloader.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   <div class="container-fluid">
     <div class="row">
@@ -18,6 +21,7 @@
           <a class="nav-link" href="{% url 'artista_app:lista-user' %}">Cantantes</a>
           <a class="nav-link" href="{% url 'artista_app:album-user' %}">Albums</a>
           <a class="nav-link" href="{% url 'artista_app:empresa-user' %}">Empresa</a>
+          <a class="nav-link" href="{% url 'artista_app:pdf' %}">PDF</a>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Buscar
@@ -35,4 +39,16 @@
       </div>
     </div>
   </div>
+  <script>
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementsByTagName('body')[0].style.backgroundColor = 'white';
+      }, 1000)
+    }
+
+    function refrescarPagina() {
+      location.reload();
+    }
+
+  </script>
 </body>

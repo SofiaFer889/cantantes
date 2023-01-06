@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse
+
 from django.urls import reverse_lazy, reverse
 from django.views.generic import (
+    View,
     TemplateView,
     CreateView,
     ListView,
@@ -10,6 +13,8 @@ from django.db.models import Max, Min, Avg
 
 from .models import Artista, Album, Empresa
 from .forms import ArtistaCreateForm, AlbumsCreateForm, EmpresaCreateForm
+from .utils import convertir_pdf
+
 
 class ArtistaCreateView(CreateView):
     template_name = "artista/add.html"
@@ -174,13 +179,13 @@ class EmpresaCreateView(CreateView):
     form_class = EmpresaCreateForm
     success_url = reverse_lazy('artista_app:empresa-user')
     
-    
 class EmpresaListView(ListView):
     template_name = "empresa/empresa_view.html"
     context_object_name = 'empresa'
-    
+       
     def get_queryset(self):
-        return Empresa.objects.all
+        return Empresa.objects.all()
+
     
     
 class ConsultaJoinn(ListView):
@@ -236,3 +241,19 @@ class Promedio(ListView):
         sueldo_promedio= super().get_context_data(**kwargs)
         sueldo_promedio['sueldo_promedio'] = Artista.objects.aggregate(Avg('sueldo_mensual'))['sueldo_mensual__avg']
         return sueldo_promedio
+    
+    
+class ListaArtistasPdf(View):
+    
+    def get(self, request, *args, **kwargs):
+        artista = Artista.objects.all()
+        data = {
+            'count': artista.count(),
+            'artista': artista,
+            'sueldoMayor': Artista.objects.aggregate(Max('sueldo_mensual'))['sueldo_mensual__max'],
+            'sueldoMenor': Artista.objects.aggregate(Min('sueldo_mensual'))['sueldo_mensual__min'],
+            'sueldoPromedio': Artista.objects.aggregate(Avg('sueldo_mensual'))['sueldo_mensual__avg'],
+            'diferenciaSueldos': Artista.objects.aggregate(Max('sueldo_mensual'))['sueldo_mensual__max'] - Artista.objects.aggregate(Min('sueldo_mensual'))['sueldo_mensual__min']
+        }
+        pdf = convertir_pdf('artista/pdf.html', data)
+        return HttpResponse(pdf, content_type='application/pdf')

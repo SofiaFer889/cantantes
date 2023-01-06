@@ -25,4 +25,5 @@ urlpatterns = [
     path('sueldo/anual/artista', views.SueldoAnual.as_view(), name='sueldo-anual'),
     path('edad/artista', views.CalcularEdad.as_view(), name='edad'),
     path('sueldo/promedio/artista', views.Promedio.as_view(), name='promedio'),
+    path('pdf', views.ListaArtistasPdf.as_view(), name='pdf'),
 ]

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img align="right" src="C:/Users/Usuario/Documents/proyecto/cantantes/cantantes/LOGO EMSER(1).png" width="250" height="100">
+    <h1 align="center">Lista de Artistas</h1>
+    <h3>Cantidad de Artistas: {{ count }}</h3>
+    <table border="1">
+        <thead>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>DNI</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Sueldo</th>
+            <th>Album</th>
+        </thead>
+        <tbody>
+            {% for a in artista %}
+                <tr>
+                    <td>{{ a.nombre }}</td>
+                    <td>{{ a.apellido }}</td>
+                    <td>{{ a.dni }}</td>
+                    <td>{{ a.fecha_de_nacimiento }}</td>
+                    <td>{{ a.sueldo_mensual }}</td>
+                    <td>{{ a.album }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3 align="right">sueldo promedio: {{sueldoPromedio}}</h3>
+    <h3 align="right">diferencia: {{diferenciaSueldos}}</h3>
+    <h3 align="right">sueldo mayor: {{sueldoMayor}}</h3>
+    <h3 align="right">sueldo menor: {{sueldoMenor}}</h3>
+</body>
+</html>
