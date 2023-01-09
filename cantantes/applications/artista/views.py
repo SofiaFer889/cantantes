@@ -187,7 +187,6 @@ class EmpresaListView(ListView):
         return Empresa.objects.all()
 
     
-    
 class ConsultaJoinn(ListView):
     template_name = "artista/join.html"
     context_object_name = 'artistas'

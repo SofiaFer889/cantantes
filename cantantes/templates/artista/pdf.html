@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="es-ar">
 <head>
+    <style> 
+        @page { 
+            size: a4 portrait; 
+            @frame header_frame {
+                -pdf-frame-content: header_content; 
+                left: 50pt; width: 512pt; top: 50pt; height: 40pt; 
+            }; 
+            @frame content_frame { 
+                left: 50pt; width: 512pt; top: 90pt; height: 632pt; 
+            }; 
+            @frame footer_frame { 
+                -pdf-frame-content: footer_content;
+                left: 50pt; width: 512pt; top: 772pt; height: 20pt; 
+            }; 
+        } 
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 </head>
 <body>
+    <div id="header_content"></div>
     <img align="right" src="C:/Users/Usuario/Documents/proyecto/cantantes/cantantes/LOGO EMSER(1).png" width="250" height="100">
     <h1 align="center">Lista de Artistas</h1>
     <h3>Cantidad de Artistas: {{ count }}</h3>
@@ -35,5 +51,6 @@
     <h3 align="right">diferencia: {{diferenciaSueldos}}</h3>
     <h3 align="right">sueldo mayor: {{sueldoMayor}}</h3>
     <h3 align="right">sueldo menor: {{sueldoMenor}}</h3>
+    <div> pagina <pdf:pagenumber> de <pdf:pagecount></div>
 </body>
 </html>
