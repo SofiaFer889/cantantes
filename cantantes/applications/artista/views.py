@@ -179,6 +179,7 @@ class EmpresaCreateView(CreateView):
     form_class = EmpresaCreateForm
     success_url = reverse_lazy('artista_app:empresa-user')
     
+    
 class EmpresaListView(ListView):
     template_name = "empresa/empresa_view.html"
     context_object_name = 'empresa'
